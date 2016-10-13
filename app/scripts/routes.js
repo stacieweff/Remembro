@@ -55,26 +55,35 @@ angular.module('remembroApp')
 
   // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
   // before trying to access that route
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-
-      .when('/chat', {
-        templateUrl: 'views/chat.html',
-        controller: 'ChatCtrl'
-      })
-      .when('/login', {
-        templateUrl: 'views/login.html',
-        controller: 'LoginCtrl'
-      })
-      .whenAuthenticated('/account', {
-        templateUrl: 'views/account.html',
-        controller: 'AccountCtrl'
-      })
-      .otherwise({redirectTo: '/'});
+  .config(['$routeProvider', '$urlRouterProvider', '$stateProvider', function($routeProvider, $urlRouterProvider, $stateProvider) {
+    $urlRouterProvider.otherwise("/");
+    $stateProvider.state('root', {
+          url: "",
+          // Make this state abstract so it can never be
+          // loaded directly
+          abstract: true,
+          resolve: {
+          },
+          views: {
+              'titlebar@': {
+                  templateUrl: 'views/titlebar.html',
+                  controller: 'TitlebarCtrl'
+              },
+          }
+      });
+      $stateProvider.state('root.dashboard', {
+          url: '/',
+          data: {
+              pageName: 'MainCtrl',
+              browserTitle: 'Main'
+          },
+          views: {
+              'container@': {
+                  templateUrl: 'views/main.html',
+                  controller: 'MainCtrl'
+              }
+          }
+      });
   }])
 
   /**
@@ -83,22 +92,19 @@ angular.module('remembroApp')
    * for changes in auth status which might require us to navigate away from a path
    * that we can no longer view.
    */
-  .run(['$rootScope', '$location', 'Auth', 'SECURED_ROUTES', 'loginRedirectPath',
-    function($rootScope, $location, Auth, SECURED_ROUTES, loginRedirectPath) {
+  .run(['$rootScope', '$location', 'Auth', 'SECURED_ROUTES', function($rootScope, $location, Auth, SECURED_ROUTES) {
       // watch for login status changes and redirect if appropriate
-      Auth.$onAuth(check);
-
       // some of our routes may reject resolve promises with the special {authRequired: true} error
       // this redirects to the login page whenever that is encountered
       $rootScope.$on('$routeChangeError', function(e, next, prev, err) {
         if( err === 'AUTH_REQUIRED' ) {
-          $location.path(loginRedirectPath);
+            console.log('auth_required');
         }
       });
 
       function check(user) {
         if( !user && authRequired($location.path()) ) {
-          $location.path(loginRedirectPath);
+            console.log('auth_required');
         }
       }
 

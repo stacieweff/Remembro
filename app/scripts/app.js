@@ -16,6 +16,5 @@ angular.module('remembroApp', [
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'firebase.ref',
-    'firebase.auth'
+    'ui.router'
   ]);

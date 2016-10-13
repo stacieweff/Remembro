@@ -1,0 +1,69 @@
+<!-- Add your site or application content here -->
+<div class="header" ng-cloak="">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">testRemembro</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/">Home</a></li>
+          <!-- //angularfire -->
+          <li><a ng-href="#/chat">chat</a></li>
+          <li>
+          <a ng-if="!user.uid" ng-click="oauthLogin('facebook')">Log In</a>
+          <a ng-if="user.uid" ng-click="showAccountInfo()">{{user.displayName}}</a>
+        </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div ng-if="isShowingInfo" class="accountInfo">
+      Profile Stuff goes here!
+      <img ng-src="{{user.photoURL}}"><img>
+      <div class="logout" ng-click="oauthLogout()">Logout</div>
+  </div>
+</div>
+<!--
+<div class="header" ng-cloak="">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand" href="#/">remembro</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#/">Home</a></li>
+          <!-- //angularfire -->
+          <!-- <li><a ng-href="#/chat">STACIE</a></li>
+          <li>
+          <a ng-hide-auth="" href="#/login">log in</a>
+          <a ng-show-auth="" href="#/account">account</a>
+        </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div> --> -->
