@@ -2,8 +2,8 @@
   "name": "remembro",
   "version": "0.0.0",
   "dependencies": {
+    "firebase": "3.3.2",
     "angular": "^1.3.0",
-    "firebase": "2.2.2",
     "angularfire": "1.0.0",
     "bootstrap": "3.3.4",
     "angular-animate": "^1.3.0",
@@ -21,6 +21,7 @@
   "appPath": "app",
   "moduleName": "remembroApp",
   "resolutions": {
-    "angular": "1.5.8"
+    "angular": "1.5.8",
+    "firebase": "3.3.2"
   }
 }

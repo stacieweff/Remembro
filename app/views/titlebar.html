@@ -21,7 +21,7 @@
           <!-- //angularfire -->
           <li><a ng-href="#/chat">chat</a></li>
           <li>
-          <li ng-if="!user" ng-click="oauthLogin('facebook')">Log In</li>
+          <li ng-if="!user" ng-click="oauthLogin()">Log In</li>
           <li ng-if="user" ng-click="toggleUserPanel()">
               {{user.displayName}}
           </li>

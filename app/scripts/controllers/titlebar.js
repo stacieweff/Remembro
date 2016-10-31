@@ -13,7 +13,7 @@ angular.module('remembroApp')
       $scope.userPanelShow = false;
 
 
-      $scope.oauthLogin = function(provider) {
+      $scope.oauthLogin = function() {
           $scope.err = null;
           var auth = firebase.auth();
 
@@ -46,7 +46,7 @@ angular.module('remembroApp')
             console.log('we signed out - show some ui message');
             $scope.checkIfAuthed();
         }, function(error) {
-            console.log('signout error, show a message, log it');
+            console.log('signout' + error + ', show a message, log it');
         });
       };
 
