@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name remembroApp.controller:MainCtrl
+ * @name remembroApp.controller:DashboardCtrl
  * @description
  * # MainCtrl
  * Controller of the remembroApp
  */
 angular.module('remembroApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('DashboardCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',

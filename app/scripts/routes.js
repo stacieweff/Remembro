@@ -56,9 +56,9 @@ angular.module('remembroApp')
   // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
   // before trying to access that route
   .config(['$routeProvider', '$urlRouterProvider', '$stateProvider', function($routeProvider, $urlRouterProvider, $stateProvider) {
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise('/');
     $stateProvider.state('root', {
-          url: "",
+          url: '',
           // Make this state abstract so it can never be
           // loaded directly
           abstract: true,
@@ -74,13 +74,13 @@ angular.module('remembroApp')
       $stateProvider.state('root.dashboard', {
           url: '/',
           data: {
-              pageName: 'MainCtrl',
-              browserTitle: 'Main'
+              pageName: 'DashboardCtrl',
+              browserTitle: 'Dashboard'
           },
           views: {
               'container@': {
-                  templateUrl: 'views/main.html',
-                  controller: 'MainCtrl'
+                  templateUrl: 'views/dashboard.html',
+                  controller: 'DashboardCtrl'
               }
           }
       });
@@ -101,12 +101,6 @@ angular.module('remembroApp')
             console.log('auth_required');
         }
       });
-
-      function check(user) {
-        if( !user && authRequired($location.path()) ) {
-            console.log('auth_required');
-        }
-      }
 
       function authRequired(path) {
         return SECURED_ROUTES.hasOwnProperty(path);

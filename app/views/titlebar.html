@@ -21,10 +21,14 @@
           <!-- //angularfire -->
           <li><a ng-href="#/chat">chat</a></li>
           <li>
-          <a ng-if="!user.uid" ng-click="oauthLogin('facebook')">Log In</a>
-          <a ng-if="user.uid" ng-click="showAccountInfo()">{{user.displayName}}</a>
+          <li ng-if="!user" ng-click="oauthLogin()">Log In</li>
+          <li ng-if="user" ng-click="toggleUserPanel()">
+              {{user.displayName}}
+          </li>
+          <div ng-if="userPanelShow" class="dropdown">
+              <div class="action" ng-click="logout()">Log Out</div>
+          </div>
         </li>
-
         </ul>
       </div>
     </div>
@@ -66,4 +70,4 @@
       </div>
     </div>
   </div>
-</div> --> -->
+</div> -->
