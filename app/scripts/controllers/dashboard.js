@@ -8,10 +8,18 @@
  * Controller of the remembroApp
  */
 angular.module('remembroApp')
-  .controller('DashboardCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('DashboardCtrl', function ($scope, todoSvc) {
+      var vm = this;
+
+      function init() {
+          getTodos();
+      }
+
+      function getTodos() {
+          todoSvc.getTodos().then(function(response) {
+              console.log(response);
+          });
+      }
+
+      init();
   });
