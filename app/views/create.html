@@ -1,0 +1,17 @@
+<h1>Create New Item</h1>
+<form name="newItem" ng-submit='vm.submitNew(newItem.$valid)' novalidate>
+    <div class="form-group">
+        <label for="name">Title</label>
+        <input class="form-control" type="text" name="name" ng-model="vm.newItemData.title" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" name="description" ng-model="vm.newItemData.description" rows="4" cols="40" required></textarea>
+    </div>
+    <div class="form-group">
+        <label for="assigned">Assigned To</label>
+        <input class="form-control" type="text" name="assigned" ng-model="vm.newItemData.assignedTo" value="" required>
+    </div>
+    <button class="btn btn-primary" type="submit" name="button">Submit</button>
+
+</form>

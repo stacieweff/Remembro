@@ -80,7 +80,23 @@ angular.module('remembroApp')
           views: {
               'container@': {
                   templateUrl: 'views/dashboard.html',
-                  controller: 'DashboardCtrl'
+                  controller: 'DashboardCtrl',
+                  controllerAs: 'vm'
+              }
+          }
+      });
+
+      $stateProvider.state('root.create', {
+          url: '/create',
+          data: {
+              pageName: 'CreateCtrl',
+              browserTitle: 'Create'
+          },
+          views: {
+              'container@': {
+                  templateUrl: 'views/create.html',
+                  controller: 'CreateCtrl',
+                  controllerAs: 'vm'
               }
           }
       });
